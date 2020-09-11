@@ -53,6 +53,10 @@ flutter:
 
   assets:
     - assets/images/background.png
+    - assets/images/pumbaa_idle.png
+    - assets/images/pumbaa_running_left.png
+    - assets/images/pumbaa_running_right.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

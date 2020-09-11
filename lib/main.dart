@@ -13,6 +13,8 @@ Future<void> main() async {
   await Flame.util.setOrientation(DeviceOrientation.landscapeLeft);
   Size size = await Flame.util.initialDimensions();
 
+  await Future.delayed(Duration(seconds: 3));
+
   Config config = Config(size);
   Get.put(config);
 
