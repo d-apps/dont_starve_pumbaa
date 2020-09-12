@@ -1,10 +1,12 @@
 import 'package:dont_starve_pumbaa/src/config.dart';
+import 'package:dont_starve_pumbaa/src/dont_starve_pumbaa.dart';
 import 'package:flame/animation.dart';
 import 'package:flame/components/animation_component.dart';
 import 'package:flame/components/component.dart';
+import 'package:flame/components/mixins/has_game_ref.dart';
 import 'package:get/get.dart';
 
-class PumbaaComponent extends AnimationComponent {
+class PumbaaComponent extends AnimationComponent with HasGameRef<DontStarvePumbaaGame> {
 
   static Config config = Get.find();
   double speedX;
@@ -24,7 +26,7 @@ class PumbaaComponent extends AnimationComponent {
     8,
     textureWidth: 78,
     textureHeight: 45,
-    stepTime: 0.13,
+    stepTime: 0.10,
     loop: true,
   );
 
@@ -33,12 +35,12 @@ class PumbaaComponent extends AnimationComponent {
     8,
     textureWidth: 78,
     textureHeight: 45,
-    stepTime: 0.13,
+    stepTime: 0.10,
     loop: true,
   );
 
   PumbaaComponent() : super(
-      config.size.width * 0.13,
+      config.size.width * 0.15,
       config.size.height * 0.20,
       animationIdle
   ){
@@ -66,15 +68,15 @@ class PumbaaComponent extends AnimationComponent {
 
   void changeAnimation(double x){
 
-    if(x.isNegative){
-
-      animation = animationRunningLeft;
-      speedX = -70;
-
-    } else {
+    if(x > config.size.width / 2){
 
       animation = animationRunningRight;
-      speedX = 70;
+      speedX = 180;
+
+    } else if(x < config.size.width / 2) {
+
+      animation = animationRunningLeft;
+      speedX = -180;
     }
 
     run = true;

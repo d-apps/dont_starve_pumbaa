@@ -1,14 +1,20 @@
 import 'package:dont_starve_pumbaa/src/components/background_component.dart';
+import 'package:dont_starve_pumbaa/src/components/bug_component.dart';
 import 'package:dont_starve_pumbaa/src/components/pumbaa_component.dart';
 import 'package:dont_starve_pumbaa/src/config.dart';
+import 'package:dont_starve_pumbaa/src/controllers/audio_controller.dart';
+import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flame/gestures.dart';
+import 'package:flame/time.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DontStarvePumbaaGame extends BaseGame with PanDetector {
 
   PumbaaComponent pumbaa;
+  AudioController audioController = Get.find();
+  Timer timer;
 
   DontStarvePumbaaGame(){
 
@@ -18,21 +24,36 @@ class DontStarvePumbaaGame extends BaseGame with PanDetector {
 
   void onStart(){
 
+   audioController.play();
+
     add(BackgroundComponent());
 
     pumbaa = PumbaaComponent();
     add(pumbaa);
 
+    timer = Timer(1.0, repeat: true, callback: ()=> add(BugComponent()))..start();
+
+  }
+
+  @override
+  void update(double t) {
+
+    timer.update(t);
+
+    super.update(t);
   }
 
 // ============= GESTURES ===============
 
+
   @override
-  void onPanUpdate(DragUpdateDetails details) {
+  void onPanStart(DragStartDetails details) {
 
-    pumbaa.changeAnimation(details.delta.dx);
+    print("DX ${details.globalPosition.dx}");
 
-    super.onPanUpdate(details);
+    pumbaa.changeAnimation(details.globalPosition.dx);
+
+    super.onPanStart(details);
   }
 
   @override

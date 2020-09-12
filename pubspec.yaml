@@ -56,7 +56,24 @@ flutter:
     - assets/images/pumbaa_idle.png
     - assets/images/pumbaa_running_left.png
     - assets/images/pumbaa_running_right.png
+    - assets/images/bug_1.png
+    - assets/images/bug_2.png
+    - assets/images/bug_3.png
+    - assets/images/bug_4.png
+    - assets/images/bug_5.png
+    - assets/images/bug_6.png
+    - assets/images/bug_7.png
+    - assets/images/bug_8.png
+    - assets/images/bug_9.png
+    - assets/images/bug_10.png
+    - assets/images/bug_11.png
+    - assets/images/bug_12.png
+    - assets/images/bug_13.png
+    - assets/images/bug_14.png
+    - assets/images/bug_15.png
 
+    - assets/audio/audio_music.mp3
+    - assets/audio/audio_swallow.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
